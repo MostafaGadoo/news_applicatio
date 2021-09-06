@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_applicatio/layout/newslayout/cubit/states.dart';
 import 'package:news_applicatio/modules/Business/business_screen.dart';
 import 'package:news_applicatio/modules/science/science_screen.dart';
-import 'package:news_applicatio/modules/settings/settingsScreen.dart';
 import 'package:news_applicatio/modules/sports/sports_screen.dart';
 import 'package:news_applicatio/shared/network/remote/dio_helper.dart';
 
@@ -124,9 +123,9 @@ class NewsCubit extends Cubit <NewsStates>{
     }
   }
 
-  bool isDark= false;
+  bool isDark= true;
 
-  void changeAppMode (){
+  void changeAppMode(){
     isDark = !isDark;
     emit(AppChangeModeState());
   }

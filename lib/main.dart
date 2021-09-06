@@ -25,6 +25,8 @@ class MyApp extends StatelessWidget {
       child: BlocConsumer<NewsCubit,NewsStates>(
         listener: (context, state) {},
         builder: (context, state) {
+
+          var cubit = NewsCubit.get(context);
           return MaterialApp(
 
             debugShowCheckedModeBanner: false,
@@ -108,7 +110,7 @@ class MyApp extends StatelessWidget {
               ),
 
             ),
-            themeMode: NewsCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
+            themeMode: cubit.isDark ? ThemeMode.dark : ThemeMode.light,
             home: NewsLayout(),
           );
         },
