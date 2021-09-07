@@ -1,5 +1,3 @@
-
-
 import 'package:conditional_builder/conditional_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -69,12 +67,63 @@ Widget myDivider() => Padding(
     );
 
 Widget articleBuilder(list, context) => ConditionalBuilder(
-  condition: list.length>0,
-  builder: (context)=> ListView.separated(
-    physics: BouncingScrollPhysics(),
-    itemBuilder: (context, index) => buildArticleItem(list[index], context),
-    separatorBuilder: (context, index)  =>myDivider(),
-    itemCount: list.length,
-  ),
-  fallback: (context)=> Center(child: CircularProgressIndicator()),
-);
+      condition: list.length > 0,
+      builder: (context) => ListView.separated(
+        physics: BouncingScrollPhysics(),
+        itemBuilder: (context, index) => buildArticleItem(list[index], context),
+        separatorBuilder: (context, index) => myDivider(),
+        itemCount: list.length,
+      ),
+      fallback: (context) => Center(child: CircularProgressIndicator()),
+    );
+
+Widget defaultFormField({
+  @required TextEditingController controller,
+  @required TextInputType type,
+  @required Function validate,
+  @required String label,
+  @required IconData prefix,
+  IconData suffix,
+  Function onSubmit,
+  Function onChanged,
+  Function onTab,
+  bool isPassword = false,
+  Function suffixPressed,
+  bool isClickable = true,
+}) =>
+    TextFormField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label,
+          prefixIcon: Icon(
+            prefix,
+          ),
+          suffixIcon: suffix != null
+              ? IconButton(
+                  onPressed: suffixPressed,
+                  icon: Icon(
+                    suffix,
+                  ),
+                )
+              : null,
+          border: OutlineInputBorder(),
+        ),
+        keyboardType: type,
+        obscureText: isPassword,
+        onFieldSubmitted: onSubmit,
+        onChanged: onChanged,
+        onTap: onTab,
+        enabled: isClickable,
+        validator: validate);
+
+    void navigateTo(
+        context,
+        Widget,
+        ){
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder:(context) => Widget,
+        ),
+      );
+    }
